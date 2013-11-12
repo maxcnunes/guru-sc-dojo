@@ -1,6 +1,4 @@
 class RomansConverter
-#TODO refactoring
-
   NUMBERS = {
     "I" => 1,
     "V" => 5,
@@ -15,13 +13,18 @@ class RomansConverter
   IXCM = %w{ I X C M }
   IXC = %w{ I X C }
 
-  def to_roman(s)
-    total = 0
+  def to_num(s)
     chars = s.split(//)
 
     raise "invalid chars"  unless is_valid_roman_number?(chars)
-    raise "invalid semantic" unless valid_semantic?(chars)
+    raise "invalid semantic" unless is_valid_semantic?(chars)
 
+    parse_roman_to_num chars
+  end
+  
+
+  def parse_roman_to_num(chars)
+    total = 0
     chars.each_with_index do |char, index|
       if has_special_chars?(char)  && is_next_greater?(chars, char, index)
         total -= NUMBERS[char]
@@ -29,12 +32,10 @@ class RomansConverter
         total += NUMBERS[char]  
       end
     end
-
     total
   end
-  
 
-  def valid_semantic?(chars) 
+  def is_valid_semantic?(chars) 
     return false if VLD.any?  { |vld| chars.count(vld) > 1 }
     return false if IXCM.any? { |ixcm| chars.count(ixcm) > 3 }
     return true
@@ -55,5 +56,4 @@ class RomansConverter
   def is_valid_roman_number?(chars)
     chars.any?  { |char| NUMBERS.include?(char) }
   end
-
 end
