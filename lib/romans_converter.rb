@@ -35,18 +35,9 @@ class RomansConverter
   
 
   def valid_semantic?(chars) 
-    map_count = {}
-    chars.each do |char|
-      map_count[char] = (map_count[char] || 0) + 1
-    end
-
-    VLD.each do |vld|
-      return false if map_count[vld] && map_count[vld] > 1
-    end
-
-    IXCM.each do |ixcm|
-      return false if map_count[ixcm] && map_count[ixcm] > 3
-    end    
+    return false if VLD.any?  { |vld| chars.count(vld) > 1 }
+    return false if IXCM.any? { |ixcm| chars.count(ixcm) > 3 }
+    return true
   end
 
   def has_special_chars?(char)
