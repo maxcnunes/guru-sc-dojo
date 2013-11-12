@@ -62,11 +62,7 @@ class RomansConverter
   end
 
   def is_valid_roman_number?(chars)
-    has = true
-    chars.each do |char|
-      has = has && NUMBERS.include?(char)
-    end
-    has
+    chars.any?  { |char| NUMBERS.include?(char) }
   end
 
 end
