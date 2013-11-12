@@ -10,5 +10,6 @@ Dojo de Ruby realizado 11/11/2013 pelo grupo Guru-SC na Resultados Digitais
 
 - Bruno Ghisi
 - Danillo Corvalan
+- Gabriel Costa
 - Max Nunes
-- ???
+
