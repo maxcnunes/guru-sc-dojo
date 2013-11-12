@@ -1,4 +1,7 @@
 class RomansConverter
+  VLD = %w{ V L D }
+  IXCM = %w{ I X C M }
+  IXC = %w{ I X C }
   NUMBERS = {
     "I" => 1,
     "V" => 5,
@@ -9,10 +12,6 @@ class RomansConverter
     "M" => 1000,
   }
 
-  VLD = %w{ V L D }
-  IXCM = %w{ I X C M }
-  IXC = %w{ I X C }
-
   def to_num(s)
     chars = s.split(//)
 
@@ -21,7 +20,9 @@ class RomansConverter
 
     parse_roman_to_num chars
   end
-  
+
+  private
+  private_constant :NUMBERS, :VLD, :IXCM, :IXC
 
   def parse_roman_to_num(chars)
     total = 0
