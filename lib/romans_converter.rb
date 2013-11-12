@@ -11,9 +11,9 @@ class RomansConverter
     "M" => 1000,
   }
 
-  VLD = ["V", "L", "D"]
-  IXCM = ["I", "X", "C", "M"]
-  IXC = ["I", "X", "C"]
+  VLD = %w{ V L D }
+  IXCM = %w{ I X C M }
+  IXC = %w{ I X C }
 
   def to_roman(s)
     total = 0
